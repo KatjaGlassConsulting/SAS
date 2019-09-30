@@ -1,3 +1,26 @@
+/*
+
+* Modify one dataset (add/remove observation, add/remove variable, change values of one observation);
+DATA adam_mod.adtte;
+	SET adam.adtte(DROP=saffl);
+	ATTRIB newvar FORMAT=$10.;
+	IF MOD(_N_,17)=0 THEN DELETE;
+	IF _N_ = 11 
+	THEN DO;
+		CALL MISSING(race, aval);
+		race = "white";
+	END;
+	OUTPUT;
+	IF _N_=20 
+	THEN DO;
+		usubjid = "01-705-1185";		
+		OUTPUT;
+	END;	
+RUN;
+
+*/
+
+
 %LET root = /folders/myshortcuts/git;
 %LET base = &root/SAS;
 

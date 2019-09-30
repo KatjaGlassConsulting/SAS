@@ -218,7 +218,7 @@ Let's compare the two styles!
 | --- | --- | --- |
 |Purpose|utility library mainly used by the developer, made available as open source | utilities specifically updated to be optimized for open source usage
 | Checks | less checks | detailed checks |
-| Header | user-frienldy with example(s) | user-frienldy with example(s) |
+| Header | user-friendly with example(s) | user-frienldy with example(s) |
 | In-Source-Comments | for complex macros | more comments |
 
 ## 8. Summary
