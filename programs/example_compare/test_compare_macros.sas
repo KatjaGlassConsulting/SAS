@@ -16,6 +16,23 @@ OPTIONS NOTES SOURCE;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 *************************** COMPVARS ********************************;
 
 %* check the example;
@@ -84,3 +101,71 @@ OPTIONS NONOTES NOSOURCE;
 
 *************************** COMPLIB ********************************;
 %complibs(adam,adam_mod);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%complibs(adam,adam_mod, sortvars=usubjid);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*************************** COMPARE ********************************;
+%compare(base=adam.adtte,compare=adam_mod.adtte,by=usubjid)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%compare(base=adam,compare=adam_mod,by=usubjid)

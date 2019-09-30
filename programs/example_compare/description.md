@@ -2,6 +2,8 @@
 
 ## 1. Seach for related macros
 
+Search in the Open Source Portal for specific macros, e.g. search for "compare" in macro descriptions ([link](https://www.glacon.eu/portal/#/scripts)).
+
 Tool | Macro | Description
 --- | --- | ---
 SAS Macros by Scott Bass | compare | PROC COMPARE either two datasets or two libraries
@@ -70,8 +72,12 @@ Now the fun starts:
  ERROR: File ADAM_MOD.ADDTE.DATA does not exist.
 ```
 
-- either checkout the source or
+Next Steps:
+
 - check to modify the call
+- check the documentation or
+- check the source
+
 
 Copy the datasets to the work library: 
 
@@ -120,3 +126,98 @@ ADT AGE AGEGR1 AGEGR1N AVAL CNSR EVNTDESC PARAM PARAMCD RACE RACEN SEX SITEID SR
 
 - using prepared example data for the datasets 
     - `%complibs(adam,adam_mod);`
+
+Now the fun starts:
+
+```
+ERROR: (complibs) No sort variable list determined for dataset ADAE
+ERROR: (complibs) No sort variable list determined for dataset ADSL
+ERROR: (complibs) No sort variable list determined for dataset ADTTE
+ERROR: (complibs) No sort variable list determined for dataset ADVS
+```
+
+Next Steps:
+
+- check to modify the call
+- check the documentation or
+- check the source
+
+When checking the parameter documentation, we either should pre-sort the datasets or use the sortvars option.
+- `%complibs(adam,adam_mod, sortvars=usubjid);`
+
+*sortvars - (optional) List of variables separated by spaces that you would use to sort the datasets to obtain uniqueness. If left blank then the current sort order is used.*
+
+Still issues available:
+```
+ERROR: File WORK.NAME.DATA does not exist.
+...
+ERROR: (complibs) No sort variable list determined for dataset ADAE
+```
+
+Finally the issue is a conflict due to the inclusion of the macros of the second toolkit. When including the macros from Rowland only (or as last step), then the macro runs just fine apart from two warnings. The resulting PROC COMPARE outputs can be checked.
+
+Checkout the notes in the header for additional information about the different options and behavior of the macro.
+
+
+## 6. Checkout Macro "compare"
+
+- checkout the header for example / usage
+
+```
+%compare(base=base,compare=comp,by=name)
+%compare(base=lib_base, compare=lib_comp)
+%compare(base=lib_base, compare=lib_comp, filter=cla*|shoes)
+```
+
+- checkout compare of two datasets
+    - `%compare(base=adam.adtte,compare=adam_mod.adtte,by=usubjid)`
+
+We get the PROC COMPARE output, as well as information in the log about the differences:
+```
+ WARNING: Data set SPDEWORK._BASE_ contains 1 variables not in SPDEWORK._COMP_.
+ WARNING: Data set SPDEWORK._COMP_ contains 1 variables not in SPDEWORK._BASE_.
+ WARNING: Data set SPDEWORK._BASE_ contains 14 observations not in SPDEWORK._COMP_.
+ WARNING: Data set SPDEWORK._COMP_ contains 1 observations not in SPDEWORK._BASE_.
+ WARNING: Werte der folgenden 2 Variablen unterscheiden sich: RACE AVAL 
+ WARNING: The data sets SPDEWORK._BASE_ and SPDEWORK._COMP_ contain unequal values.
+```
+
+- checkout compare of two libraries
+    - `%compare(base=adam,compare=adam_mod,by=usubjid)`
+
+Result window shows a great overview of the resulting compare:
+
+![Macro Result Screenshot](../../images/example_compare_output.png)
+
+PROC COMPARE results are available as well. There are also warnings in the log, but as these are very unspecific (e.g. SPDEWORK.\_BASE\_) it is not obvious for which dataset these belong to.
+
+## 7. Glances at the code
+
+After checking the functionality, the source code might be looking interesting as well. Especially for learning how to create macros it is very beneficial to checkout how other did it.
+
+All code examples has a very nice header which allows to quickly find out how to use the macro and what the parameters mean. Such a documentation is essential for open source solutions to allow others a quick learning curve when it comes to usage. Additional in-source documentation is great to allow an easy learning of what specific code blocks do before checking them in detail.
+
+Let's compare the two styles!
+
+|  | Rowland's SAS macros | Macro from Scott Bass |
+| --- | --- | --- |
+|Purpose|utility library mainly used by the developer, made available as open source | utilities specifically updated to be optimized for open source usage
+| Checks | less checks | detailed checks |
+| Header | user-frienldy with example(s) | user-frienldy with example(s) |
+| In-Source-Comments | for complex macros | more comments |
+
+## 8. Summary
+
+It is easy with the portal to find specific macros if available and check the functionality. As typicall when using other peoples program, it might be easy and intuitive or there might be some hurdles to take.
+
+What is important when creating open source SAS macros?
+- Use speaking macro and parameter names
+- Use a header containing major information and parameter description
+- Include comments in your code
+- Ideally include error handling
+- Checkout Good Programming practices from [PhUSE collaboration](https://www.phusewiki.org/wiki/index.php?title=File:GPP_Guidance_Document_v1.1.docx)
+
+Why do people use open source
+- For easy available functionality
+- For learning purposes
+- To adopt for own purposes
