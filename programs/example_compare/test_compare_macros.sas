@@ -1,18 +1,25 @@
 %LET root = /folders/myshortcuts/git;
 %LET base = &root/SAS;
 
+/*
 filename mymacs "&base/tools/downloads/rowland_utilmacros";
 %include mymacs('*.sas');
 
 filename mymacs "&root/SASScottBass/Macro";
 %include mymacs('*.sas');
+*/
+
+
+OPTIONS SASAUTOS = ("&base/tools/downloads/rowland_utilmacros", "&root/SASScottBass/Macro" , SASAUTOS);
+OPTIONS MRECALL;
+
 
 LIBNAME adam "&base/data/adam";
 LIBNAME adam_mod "&base/data/adam/mod_01";
 
 %PUT ************ DONE *********************;
 
-OPTIONS NOTES SOURCE;
+OPTIONS NONOTES NOSOURCE;
 
 
 
@@ -134,10 +141,8 @@ OPTIONS NONOTES NOSOURCE;
 
 
 
-
-
 *************************** COMPARE ********************************;
-%compare(base=adam.adtte,compare=adam_mod.adtte,by=usubjid)
+%compare(base=adam.adtte,compare=adam_mod.adtte,by=usubjid);
 
 
 
@@ -165,7 +170,6 @@ OPTIONS NONOTES NOSOURCE;
 
 
 
+%compare(base=adam,compare=adam_mod,by=usubjid);
 
 
-
-%compare(base=adam,compare=adam_mod,by=usubjid)

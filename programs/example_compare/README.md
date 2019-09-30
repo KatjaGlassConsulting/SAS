@@ -30,9 +30,17 @@ Roland's SAS® Macros | compvars | To compare the differences in variables prese
 ## 3. Prepare environment
 
 - create example dataset(s)
+- include the macros in SASAUTOS
+
+``` 
+    OPTIONS SASAUTOS = ("<path1>", "<path2>" , SASAUTOS);
+    OPTIONS MRECALL;
+```
+
+Otherwise you might
 - perform "include" of all macros
 
-``` sas
+``` 
     filename mymacs "<path>";
     %include mymacs('*.sas');
 ```
@@ -147,19 +155,26 @@ When checking the parameter documentation, we either should pre-sort the dataset
 
 *sortvars - (optional) List of variables separated by spaces that you would use to sort the datasets to obtain uniqueness. If left blank then the current sort order is used.*
 
-Still issues available:
+By working with SASAUTOS or including the Rowland tool as last, you will see the resulting PROC COMPARE outputs.
+
+If you had ben working with INCLUDE statements, you will get issues:
 ```
 ERROR: File WORK.NAME.DATA does not exist.
 ...
 ERROR: (complibs) No sort variable list determined for dataset ADAE
 ```
 
-Finally the issue is a conflict due to the inclusion of the macros of the second toolkit. When including the macros from Rowland only (or as last step), then the macro runs just fine apart from two warnings. The resulting PROC COMPARE outputs can be checked.
+This issue is a conflict due to the inclusion of the macros of the second toolkit. When including the macros from Rowland only (or as last step), then the macro runs just fine apart from two warnings. The resulting PROC COMPARE outputs can be checked. 
+
+When working with SASAUTOS, the issue is not available, as the naming conflict only appears when some specific macros are included. In general it makes sense to either initialize just one toolkit at a time or rename all macros. You might want to check for naming conflicts first.
 
 Checkout the notes in the header for additional information about the different options and behavior of the macro.
 
 
 ## 6. Checkout Macro "compare"
+
+![caution](../../images/caution_40.png) | Currently (30SEP2019) the macro does not work correctly for libraries - use the commit from 21FEB2019 - the issue will likely be fixed soon, then you can take the latest release
+--|--
 
 - checkout the header for example / usage
 
