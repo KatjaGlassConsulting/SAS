@@ -165,7 +165,7 @@ OPTIONS NONOTES NOSOURCE;
 
 
 *************************** COMPARE ********************************;
-%compare(base=adam.adtte,compare=adam_mod.adtte,by=usubjid);
+%compare(base=adam.adtte,comp=adam_mod.adtte,by=usubjid);
 
 
 
@@ -193,6 +193,6 @@ OPTIONS NONOTES NOSOURCE;
 
 
 
-%compare(base=adam,compare=adam_mod,by=usubjid);
+%compare(base=adam,comp=adam_mod,by=usubjid);
 
 

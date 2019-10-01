@@ -173,19 +173,16 @@ Checkout the notes in the header for additional information about the different 
 
 ## 6. Checkout Macro "compare"
 
-![caution](../../images/caution_40.png) | Currently (30SEP2019) the macro does not work correctly for libraries - use the commit from 21FEB2019 - the issue will likely be fixed soon, then you can take the latest release
---|--
-
 - checkout the header for example / usage
 
 ```
-%compare(base=base,compare=comp,by=name)
-%compare(base=lib_base, compare=lib_comp)
-%compare(base=lib_base, compare=lib_comp, filter=cla*|shoes)
+%compare(base=base,comp=comp,by=name)
+%compare(base=lib_base, comp=lib_comp)
+%compare(base=lib_base, comp=lib_comp, filter=cla*|shoes)
 ```
 
 - checkout compare of two datasets
-    - `%compare(base=adam.adtte,compare=adam_mod.adtte,by=usubjid)`
+    - `%compare(base=adam.adtte,comp=adam_mod.adtte,by=usubjid)`
 
 We get the PROC COMPARE output, as well as information in the log about the differences:
 ```
@@ -198,7 +195,7 @@ We get the PROC COMPARE output, as well as information in the log about the diff
 ```
 
 - checkout compare of two libraries
-    - `%compare(base=adam,compare=adam_mod,by=usubjid)`
+    - `%compare(base=adam,comp=adam_mod,by=usubjid)`
 
 Result window shows a great overview of the resulting compare:
 
