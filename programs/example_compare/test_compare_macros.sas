@@ -66,8 +66,9 @@ OPTIONS NONOTES NOSOURCE;
 *************************** COMPVARS ********************************;
 
 %* check the example;
+OPTIONS NOSOURCE NOSOURCE2;
 %LET ds1 = adam.adtte;
-%LET ds2 = adam_mod.addte;
+%LET ds2 = adam_mod.adtte;
 %compvars(&ds1,&ds2);
 %put NOTE: Variables found in &ds1 but not &ds2:;
 %put &_left_;
