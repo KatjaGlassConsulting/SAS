@@ -17,7 +17,7 @@ The folling structure is used for this repository
 | \SAS\results | results area |
 | \SAS\results\FDAJumpstartExampleOutputs | outputs running modified FDA Jumpstart scripts on SDTM data provided by PhUSE in SAS University edition |
 | \SAS\tools\downloads | contains downloads with no changes |
-| \SAS\tools\downloads\rowland_utilmacros | Rowland's Utility Macros ([link](http://www.datasavantconsulting.com/roland/Spectre/download.html))
+| \SAS\tools\downloads\roland_utilmacros | Roland's Utility Macros ([link](http://www.datasavantconsulting.com/roland/Spectre/download.html))
 
 
 ## External Tool Access

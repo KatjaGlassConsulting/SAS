@@ -155,7 +155,7 @@ When checking the parameter documentation, we either should pre-sort the dataset
 
 *sortvars - (optional) List of variables separated by spaces that you would use to sort the datasets to obtain uniqueness. If left blank then the current sort order is used.*
 
-By working with SASAUTOS or including the Rowland tool as last, you will see the resulting PROC COMPARE outputs.
+By working with SASAUTOS or including the Roland tool as last, you will see the resulting PROC COMPARE outputs.
 
 If you had ben working with INCLUDE statements, you will get issues:
 ```
@@ -164,7 +164,7 @@ ERROR: File WORK.NAME.DATA does not exist.
 ERROR: (complibs) No sort variable list determined for dataset ADAE
 ```
 
-This issue is a conflict due to the inclusion of the macros of the second toolkit. When including the macros from Rowland only (or as last step), then the macro runs just fine apart from two warnings. The resulting PROC COMPARE outputs can be checked. 
+This issue is a conflict due to the inclusion of the macros of the second toolkit. When including the macros from Roland only (or as last step), then the macro runs just fine apart from two warnings. The resulting PROC COMPARE outputs can be checked. 
 
 When working with SASAUTOS, the issue is not available, as the naming conflict only appears when some specific macros are included. In general it makes sense to either initialize just one toolkit at a time or rename all macros. You might want to check for naming conflicts first.
 
@@ -211,7 +211,7 @@ All code examples has a very nice header which allows to quickly find out how to
 
 Let's compare the two styles!
 
-|  | Rowland's SAS macros | Macro from Scott Bass |
+|  | Roland's SAS macros | Macro from Scott Bass |
 | --- | --- | --- |
 |Purpose|utility library mainly used by the developer, made available as open source | utilities specifically updated to be optimized for open source usage
 | Checks | less checks | detailed checks |

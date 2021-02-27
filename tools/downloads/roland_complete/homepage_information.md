@@ -1,6 +1,6 @@
 # Content
 
-The following content was copied from the homepage where the macros are located on 31.01.2021. As the homepage is no longer maintained, more and more information gets lost.
+The following content was copied from the homepage where the macros are located on 31.01.2021. As the homepage is no longer maintained, more and more information gets lost. Roland Rashleigh-Berry had published these macros as "free to use".
 
 URL: http://www.datasavantconsulting.com/roland/Spectre/download.html
 

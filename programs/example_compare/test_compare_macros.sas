@@ -25,7 +25,7 @@ RUN;
 %LET base = &root/SAS;
 
 /*
-filename mymacs "&base/tools/downloads/rowland_utilmacros";
+filename mymacs "&base/tools/downloads/roland_utilmacros";
 %include mymacs('*.sas');
 
 filename mymacs "&root/SASScottBass/Macro";
@@ -33,7 +33,7 @@ filename mymacs "&root/SASScottBass/Macro";
 */
 
 
-OPTIONS SASAUTOS = ("&base/tools/downloads/rowland_utilmacros", "&root/SASScottBass/Macro" , SASAUTOS);
+OPTIONS SASAUTOS = ("&base/tools/downloads/roland_utilmacros", "&root/SASScottBass/Macro" , SASAUTOS);
 OPTIONS MRECALL;
 
 
